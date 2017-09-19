@@ -1,0 +1,1129 @@
+@charset "utf-8";
+@import url("./normalize.css");
+@import url("./reset.css");
+@import url("./fonts.css");
+
+/* 숨김 콘텐츠 */
+
+.readable-hidden,
+legend {
+  position: absolute;
+  left: -9999em;
+  /* 과거의 숨김트릭
+font-size: 0;
+line-height: 0;
+width: 1px;
+height: 1px;
+margin: -1px 0 0 -1px; */
+}
+
+
+/* 본문 스타일 */
+
+html {
+  font-size: 10px;
+}
+
+body {
+  color: #181818;
+  font-size: 1.4rem;
+  font-family: "Noto Sans Regular", sans-serif;
+  background-color: #fff;
+}
+
+
+/* 링크 스타일 */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #f00;
+}
+
+
+/* 기본 box-sizing 재설정. 전체 *를 선택*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.header,
+.visual,
+.main-content,
+.slogan,
+.footer {
+  width: 940px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  background: url("images/bg_flower.png") no-repeat 50% 0, linear-gradient(to bottom, #aaa 0%, #fff 50%, #fff 100%);
+  background-color: #aaa;
+}
+
+
+/* 헤더 */
+
+.header {
+  background-color: #fff;
+  padding: 0 30px 30px;
+  position: relative;
+  border-radius: 0 0 25px 25px/ 0 0 25px 25px;
+}
+
+
+/* 로고 */
+
+.logo {
+  position: absolute;
+  top: 45px;
+  left: 65px;
+}
+
+
+/* 안내링크 */
+
+.info-menu {
+  display: flex;
+  justify-content: flex-end;
+  text-transform: uppercase;
+  position: relative;
+  /* right: 10px; */
+}
+
+.info-menu a {
+  display: inline-block;
+  padding: 8px 10px;
+}
+
+.info-menu li:last-child::after {
+  content: "";
+}
+
+.info-menu li::after {
+  content: ":";
+}
+
+
+/* 메인메뉴 */
+
+.main-menu {
+  background: rgba(255, 147, 25, 1) linear-gradient(to bottom, rgba(255, 147, 25, 1) 0%, rgba(252, 100, 30, 1) 35%, rgba(252, 100, 30, 1) 70%, rgba(255, 147, 25, 1) 99%);
+  border-top: 2px solid #000;
+  border-radius: 0 0 5px 5px;
+  height: 47px;
+  padding-left: 225px;
+}
+
+.main-menu>li {
+  float: left;
+  position: relative;
+}
+
+.main-menu span {
+  /*글자까지만이 아니라 자기가 속해있는 부모영역까지 커서먹게 하기 */
+  color: #fff;
+  display: block;
+  cursor: pointer;
+  font: 1.6rem "Noto Sans Bold", sans-serif;
+  line-height: 45px;
+  padding: 0 20px;
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0px 1px 0 #000, 0 -1px 0 #000;
+}
+
+.main-menu span:hover,
+.main-menu span:focus {
+  color: #ff0;
+  /* 디자인적으로 인지가능하면 없애도 되지만, 그렇지 않는경우 절대 없애면안되 웹표준 */
+  outline: 0;
+}
+
+.main-menu span:hover::after,
+.main-menu span:focus::after {
+  /* 가짜상자 */
+  display: block;
+  content: "";
+  border-top: 2px solid #000;
+}
+
+
+/* 서브메뉴 */
+
+.sub-menu {
+  position: absolute;
+  top: 47px;
+  font-size: 0;
+  white-space: nowrap;
+}
+
+.sub-menu a,
+.sub-menu li {
+  font-size: 1.4rem;
+  /*커서범위 넓게 해주려고 li에 안넣고 자식에 넣은것임*/
+  /* padding: 5px 10px 5px 0; */
+  /* 위아래 여백을주었을떄 위랑 겹치닌깐 블록화 ㄱ ㄱ  */
+  display: inline-block;
+}
+
+.sub-menu a {
+  padding: 5px 10px 5px 0;
+  margin-right: 5px;
+}
+
+.sub-menu a::before {
+  content: '\e80a';
+  font-family: "fontello";
+  /* 없어도 되는 코드이지만, 가운데로 보낼려고 */
+  /* position: relative; */
+  /* top: 2px; */
+  margin-right: 5px;
+}
+
+.sub-menu a:hover::before,
+.sub-menu a:focus::before {
+  content: '\e808';
+}
+
+.about-html {
+  display: none;
+}
+
+.about-css {
+  display: none;
+}
+
+.web-standards {
+  display: none;
+}
+
+.web-accessibility {
+  display: none;
+  right: 0;
+}
+
+.qna {
+  display: none;
+  right: 0;
+}
+
+.archive {
+  display: none;
+  right: 0;
+}
+
+.sub-menu-active {
+  display: block!important;
+}
+
+
+/* 비주얼 */
+
+@keyframes text-ani {
+  0% {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0);
+    transform: translate(0, 0);
+  }
+  100% {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 1);
+    transform: translate(400px, 75px);
+  }
+}
+
+@keyframes flower-ani {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.visual {
+  height: 120px;
+  position: relative;
+}
+
+.visual::before,
+.visual::after {
+  /* 꽃을 넣기 위한 박스 */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: flower-ani 5s infinite;
+}
+
+.visual::before {
+  background: url("images/ani_flower_01.png") no-repeat 0 -15px, url("images/ani_flower_02.png") no-repeat 670px 0;
+  /* animation: flower-ani1 4s 2s both;
+animation-iteration-count: infinite;
+animation-timing-function: ease-in-out; */
+}
+
+.visual::after {
+  background: url("images/ani_flower_03.png") no-repeat 300px 0, url("images/ani_flower_04.png") no-repeat 800px 0;
+  /* animation: flower-ani2 3s 1s both;
+animation-iteration-count: infinite;
+animation-timing-function: ease-in-out; */
+  animation-delay: 3s;
+}
+
+.visual-text {
+  width: 500px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* name | duration | fillmode */
+  animation: text-ani 2s forwards;
+  /* 정지버튼에 활용. animation-play-state: paused; */
+}
+
+
+/* 메인 콘텐츠 */
+
+.main-content {
+  background-color: #fff;
+  border-radius: 25px 25px 0 0;
+  padding: 30px;
+  min-height: 400px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+
+/* 봉이한거 로그인 영역 */
+
+
+/* .login {
+background-color: orange;
+padding: 10px;
+border-radius: 5px;
+box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.login-heading {
+color: yellow;
+font-size: 1.8rem;
+font-weight: 600;
+padding: 0 0 5px 10px;
+}
+
+.login-form {
+background-color: #fff;
+padding: 10px;
+border-radius: 5px;
+font-size: 1.2rem;
+font-weight: 400;
+}
+fieldset{}
+fieldset label {
+display: inline-block;
+width: 50px;
+}
+
+fieldset input {
+display: inline-block;
+width: 86px;
+font-size: 0.8rem;
+text-indent: 0.2rem;
+}
+
+.btn-login {
+position: absolute;
+width: 50px;
+height: 50px;
+display: inline-block;
+background-color: orangered;
+border-radius: 5px;
+border: none;
+color: #fff;
+}
+
+.member {
+border-top: 1px solid rgba(207, 203, 203, 0.76);
+padding: 10px 0 0;
+}
+
+.member li {
+display: inline-block;
+} */
+
+
+/* 그룹 */
+
+.group {}
+
+.group1 {
+  width: 250px;
+}
+
+.group2 {
+  width: 380px;
+}
+
+.group3 {
+  width: 190px;
+}
+
+
+/* 로그인 영역 */
+
+.login {
+  background: radial-gradient(circle at right top, orange, orangered);
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 5px 5px 0 0 #aaa;
+}
+
+.login-heading {
+  color: yellow;
+  font-size: 1.5rem;
+  font-family: 'Noto Sans Bold';
+  margin: 0 0 10px 10px;
+}
+
+.login-form {
+  background: #fff;
+  border-radius: 5px 5px 0 0;
+  padding: 10px 10px 0 10px;
+}
+
+.member {
+  background: #fff;
+  border-radius: 0 0 5px 5px;
+  padding: 10px 10px 10px 10px;
+  /* display: flex;
+justify-content: space-between; */
+}
+
+.member::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+/* first, last child로 가능 */
+
+.member li {
+  letter-spacing: -1px;
+}
+
+.member li:nth-child(odd) {
+  float: left;
+}
+
+.member li:nth-child(even) {
+  float: right;
+}
+
+.member a {
+  padding: 5px 0;
+}
+
+.member a::before {
+  content: "g";
+  font-family: "webcafeIcon";
+  /* 이건 폰트 잘못만들어서 간격 임의로 지정해주는거임 */
+  position: relative;
+  top: 2px;
+  color: red;
+}
+
+.user-email,
+.user-pw {
+  margin-bottom: 6px;
+  font-size: 0;
+}
+
+.login-form label,
+.login-form input,
+.btn-login {
+  font-size: 1.4rem;
+}
+
+.login-form label {
+  width: 4em;
+  display: inline-block;
+}
+
+.login-form input {
+  width: 98px;
+  height: 22px;
+  border: 1px solid #aaa;
+  padding: 0 0 0 5px;
+}
+
+
+/* 에러 뭐지? 헐 diplay에 absolute를 넣었다니.... */
+
+.login-form fieldset {
+  position: relative;
+  border-bottom: 1px solid #aaa;
+  padding-bottom: 4px;
+}
+
+.btn-login {
+  position: absolute;
+  /*브라우저 마다 다른 버튼문제를 초기화시키기 reset에 넣어도됨*/
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0 5px;
+  border: 0;
+  width: 50px;
+  height: 50px;
+  background-color: orangered;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 3px;
+}
+
+
+/* 유효성 검사 배너 링크 */
+
+.validation {
+  margin-top: 20px;
+}
+
+.validation-list li {
+  margin-bottom: 10px;
+}
+
+.validation-list a {
+  display: block;
+  border: 1px solid #3E3E3E;
+  padding: 5px 10px 5px 45px;
+  border-radius: 20px;
+  background: url("images/validation_icon.png") no-repeat 15px 50%, linear-gradient(to top, #eee, #ccc);
+}
+
+
+/* 
+비포어에 아이콘 먹이면 왜안되지????
+지금은 hover 효과가 없으닌깐, 굳이 before(인라인요소)가짜상자를 만들 필요는 없음.
+비포어 하려면 또 백그라운드 사이즈도 따로 지정해줘야해서 귀찮음
+합리적인 선택인지를 판단해보고 a박스의 백그라운드할지 before라는 빈상자를 만들어주도록
+저번에 ::before로 한건 아이콘을 폰트로 넣어서 그 영역을 따로 빈상자를 만들어 줘야해서였음
+지금 같은경우면 그냥 a:hover로하면됨
+*/
+
+
+/* 웹 관련 용어 */
+
+.term {
+  background: linear-gradient(to bottom, #eee, #ccc);
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.term-heading {
+  font-family: "Noto Sans Bold";
+  font-size: 1.6rem;
+}
+
+.term-list {}
+
+.term-list::after {
+  content: "";
+  /* clear속성 쓰려면 블록되야함 */
+  clear: both;
+  display: block;
+}
+
+.term-list-heading,
+.term-list-brief {
+  float: right;
+  width: 145px;
+}
+
+.term-list-heading {
+  color: #296897;
+  font-weight: bold;
+  margin-bottom: 5px;
+  /* 패딩은 음수를 쓸수 없지만, 마진은 음수를 쓸수있다 */
+  margin-top: 11px;
+}
+
+.term-list-thumbnail {
+  float: left;
+}
+
+.term-list-thumbnail img {
+  /* img 인라인속성 밑에 여백없애기 위해 블록으로*/
+  display: block;
+}
+
+.term-list-thumbnail {
+  margin-top: 15px;
+}
+
+.term-list dt:nth-child(6n+4),
+.term-list dd:nth-child(6n+6) {
+  float: left;
+}
+
+.term-list dd:nth-child(6n+5) {
+  float: right;
+}
+
+
+/* .term {
+  background: #eee linear-gradient(to bottom, #eee, #ccc);
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.term-list {}
+
+.term-heading {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.term-list-heading {
+  font-weight: 700;
+  display: inline-block;
+  text-align: left;
+  color: #0C67AA;
+}
+
+.term-list-thumbnail {
+  display: block;
+  float: left;
+  margin-right: 10px;
+}
+
+.term-list-brief {
+  font-size: 1.2rem;
+  display: block;
+} */
+
+
+/* 검색*/
+
+.search {
+  background: linear-gradient(to top, #eee, #ccc);
+  border: 1px solid #aaa;
+  border-bottom: #fff;
+  border-radius: 15px 15px 0 0;
+  padding: 20px 25px;
+}
+
+.flex-container {
+  /* 파이어폭스 보면서하기. web-kit계열에서는 에러남 */
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-form label,
+.search-form input,
+.btn-search {
+  vertical-align: middle;
+}
+
+.search-form label::before {
+  /* 폰트로 컨텐츠 추가를 위해 빈상자 필요 */
+  content: "z";
+  font-family: "webcafeIcon";
+  position: relative;
+  top: 2px;
+}
+
+.search-form input {
+  /* 가급적 아이디값 호출하지말기 */
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  padding: 0 0 0 5px;
+  height: 22px;
+  width: 200px;
+  /* width: calc(100% - 120px); */
+}
+
+.btn-search {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  padding: 0 10px;
+  color: #fff;
+  background: linear-gradient(to bottom, #333, #999);
+  font-size: 1.2rem;
+  height: 22px;
+}
+
+
+/* 봉이한거 float로 해결하기
+.search {
+  background: #ccc linear-gradient(to bottom, #ccc, #fff);
+  padding: 20px 25px;
+  border-top: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.search-form {}
+
+.search-form::before {
+  font-family: "webcafeIcon";
+  content: "z";
+}
+
+.search-form fieldset {
+  display: inline-block;
+}
+
+.search-form label {
+  margin-right: 5px;
+}
+
+.search-form input {
+  margin-right: 5px;
+  width: 203px;
+}
+
+.btn-search {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  color: #fff;
+  background: #181818 linear-gradient(to bottom, #181818, #ccc);
+} */
+
+
+/* 공지사항, 자료실 */
+
+.board {
+  margin-top: 20px;
+  position: relative;
+  /* 리스트개수가 유동적이면 고정 height주면안됨 */
+}
+
+.board ul,
+.board>a {
+  /* 구체성 점수. 11점 나중에 선택된거에 먹음.  */
+  display: none;
+}
+
+.board-active ul,
+.board-active>a {
+  /* ul 리스트안의 앵커태크까지 선택되지 않게 > 자식선택자 */
+  /* 누군가 위치를바꾸는순간 안먹을수 있기때문에 !important */
+  display: block!important;
+}
+
+.notice-heading,
+.pds-heading {
+  /* 1. 클래식한방법_탭을 플로트로 배치했을 경우 */
+  /* float: left; */
+  /* 2. 번째방법 */
+  position: absolute;
+  top: 0;
+  /* 3. grid방법 */
+  /*  */
+  /* Tab이라는 모듈. 모듈화*/
+  background: linear-gradient(to bottom, #eee, #ccc);
+  /* 링크, 버튼객체가 아님에도. 손가락으로 커서바뀜. 나중에 로그인 label도 바꿔주자 */
+  cursor: pointer;
+  border: 1px solid #aaa;
+  border-radius: 5px 5px 0 0;
+  padding: 5px 15px;
+  color: #303030;
+}
+
+.notice-heading {
+  left: 0;
+}
+
+.pds-heading {
+  left: 83px;
+}
+
+.board-active .notice-heading,
+.board-active .pds-heading {
+  /* 선택자 재정의 ~안의 */
+  /* 구체성 20점이지만 임포턴트 붙이는게 안정함 */
+  /* 헐 백그라운드 컬러라고 하면 안먹더니, 백그라운드라고 하닌깐 먹음. 속기법이라서그럼
+  그라디언트는 background-image임. 그래서color는 그보다 밑에 깔려있던것*/
+  background: #fff;
+  color: #f00;
+  border-color: #f00 #f00 #fff;
+}
+
+.notice-list,
+.pds-list {
+  /* 1.클래식한방법_목록을 레이어로 배치했을 경우 */
+  /* position: absolute;
+  top: 45px;
+  left: 0;
+  width: 100%; */
+  /* 2. 번째방법 nothing */
+  /* 3. grid */
+  padding-top: 45px;
+  min-height: 180px;
+}
+
+.notice-list li,
+.pds-list li {
+  margin: 5px 0;
+}
+
+.notice-list li:before,
+.pds-list li::before {
+  content: "r";
+  font-family: "webcafeIcon";
+  position: relative;
+  top: -2px;
+  /* 이거 인라인블록때메 밑에 갭생겨서 오히려 올려줘야함*/
+}
+
+.notice-list a,
+.pds-list a {
+  /* a inline객체는 width를 줄 수 없음 */
+  /* 옆에 날짜와 함께 줘야하닌깐 인라인 블록 */
+  width: 285px;
+  display: inline-block;
+  /* 줄바꿈 방지시키기. 이거 어디서봤더락 복습 ㄱㄱㄱ*/
+  white-space: nowrap;
+  overflow: hidden;
+  /* 위아래 갭이생김. 인라인블록이라서 생기는 갭이다??? */
+  /* 새로운 css3속성임. 넘어가는건 ... 스크립트 서버단의 고통을 줄여줌*/
+  text-overflow: ellipsis;
+  /* 3개를 패키지로 써야지만 먹힘. white-space, overflow, text-overflow */
+}
+
+.notice-list time,
+.pds-list time {
+  /* float 부모 li안에서 오른쪽 */
+  /* 목록을 띄우면서 부모안에 width안주면 쭈구러들수있음. */
+  float: right;
+}
+
+.icon-more::before {
+  content: "p";
+  font-family: "webcafeIcon";
+  position: relative;
+  top: 2px;
+  color: hsla(120, 30%, 50%, 1);
+  margin-right: 5px;
+}
+
+.notice-more,
+.pds-more {
+  /* icon-more에 주면안되 */
+  /* a는 원래 inline이지만, absolute하는 순간 block 됨 */
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  /* 주변부 클릭해도 커서먹게하기 */
+  padding: 8px;
+}
+
+
+/* 봉이가 한거
+  .board {
+  background-color: yellow;
+  margin-top: 20px;
+  position: relative;
+}
+
+.notice-heading,
+.pds-heading {
+  float: left;
+  background: linear-gradient(to bottom, #eee, #ccc);
+  border: 1px solid #aaa;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px 15px;
+}
+
+.board-active {
+  color: red;
+  background-color: white;
+  border-color: red;
+}
+
+.icon-more::before {
+  content: "p";
+  font-family: "webcafeIcon";
+  position: relative;
+  top: 2px;
+  left: -2px;
+  color: lime;
+}
+
+.notice-more,
+.pds-more {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.notice-list,
+.pds-list {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+}
+
+.pds-list {
+  display: none;
+}
+
+.notice-list a,
+.pds-list a {
+  display: block;
+  width: 265px;
+}
+
+.notice-list time,
+.pds-list time {
+  float: right;
+} */
+
+
+/*--------- 새소식------------ */
+
+
+/* 1. 여백과 포지션을 이용한방법. 최대한 레이어를 적게 만들기 */
+
+.news {
+  margin-top: 20px;
+  position: relative;
+}
+
+.news::before {
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 80%;
+  height: 1px;
+  background-color: blue;
+  background: linear-gradient(to right, #aaa, #fff);
+}
+
+.news-heading {
+  font-size: 1.6rem;
+  font-family: "Noto Sans Bold";
+  color: #f00;
+}
+
+.news a:nth-child(2) {
+  /* a태그는 반드시 블록화해야지 이슈가 적음_why? */
+  display: block;
+  /* 커서영역 텍스트에만 먹게. 패딩하면 여백까지 커서먹음 */
+  margin-top: 30px;
+}
+
+.news-item {
+  padding-left: 145px;
+  /* 마진을쓰면 안되나요? */
+  /* 안되요. 마진은 아티클 바깥영역이 되기때문에 이미지를 앱솔로 옮겨지지못함 */
+  position: relative;
+}
+
+.news-item-heading {
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* 패딩은 음수불가. 마진은 음수가능 이게 큰특징이자 장점 */
+  /* margin-top: -20px; */
+  /* em단위로 마진가능. 여기선 1em = 1.5px or 1.5rem 유용함*/
+  margin-left: -1em;
+  position: relative;
+  top: -5px;
+  /* 디자인할때 아예 레딩?을 고려하면 인라인 여백 일일히 쪼매씩 올릴필요없 */
+}
+
+.news-item-heading::before {
+  content: "r";
+  font-family: "webcafeIcon";
+  position: relative;
+  top: 2px;
+}
+
+.news-item-brief {
+  /* 1.6이 디자인상 보기제일 좋지만, 반응형일땐 값 딱 떨어지는 1.5 */
+  line-height: 1.5;
+}
+
+.news-item-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.news-item-thumbnail img {
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.news-item-thumbnail figcaption {
+  /* rem em px 여러개쓰고있지만, 나중엔 설계해서 쓰도록 */
+  margin-top: 15px;
+  text-align: center;
+}
+
+.news-more {
+  position: absolute;
+  /* 커서영역 넓혀주기 */
+  top: -8px;
+  right: -8px;
+  padding: 8px;
+}
+
+
+/* .news {
+  margin-top: 20px;
+  position: relative;
+}
+.news::before {
+  content: "";
+  width: 80%;
+  height: 1px;
+  position: absolute;
+  top: 30px;
+  background-image: linear-gradient(to right, #ccc 90%, #fff);
+}
+.news-heading {
+  color: red;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.news-item {
+  padding-left: 140px;
+}
+
+.news-item-heading {
+  font-weight: bold;
+  margin-left: -14px;
+}
+
+.news-item-heading::before {
+  content: "r";
+  font-family: "webcafeIcon";
+  position: relative;
+  top: 2px;
+  left: -2px;
+}
+
+.news-item>time {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.news-item-brief {
+  text-align: justify;
+}
+
+.news-item-thumbnail {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  text-align: center;
+}
+
+.news-item-thumbnail img {
+  box-shadow: 0 7px 20px 0 rgba(0, 0, 0, 0.3);
+  margin-bottom: 15px;
+}
+
+.news-more {
+  position: absolute;
+  padding: 8px;
+  top: -8px;
+  right: -8px;
+} */
+
+
+/* event */
+
+.event-related {
+  background: linear-gradient(to bottom, #eee, #ccc);
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  padding: 10px;
+}
+
+.event {
+  border-bottom: 1px solid #aaa;
+  position: relative;
+}
+
+.event-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.event-heading span {
+  color: red;
+}
+
+#event-detail {
+  margin-bottom: 10px;
+}
+
+.event-thumbnail img {
+  border: 1px solid #aaa;
+  box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+}
+
+.btn-event {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  /* 색칠안해서 몰랐음. TIL 필기하깅. */
+  /* 부모에도 같은 높이갚으로 잘라줘야함 */
+  background-color: pink;
+  height: 18px;
+}
+
+.btn-event-prev,
+.btn-event-next {
+  background: url('images/back_forward.png') no-repeat;
+  width: 19px;
+  height: 18px;
+  /* IR 트릭 보통 패딩탑줌. */
+  padding: 18px 0 0 0;
+  overflow: hidden;
+  border: 0;
+}
+
+.btn-event-next {
+  background-position: -36px 0;
+  margin-left: 5px;
+}
+
+
+/* 슬로건 */
+
+.slogan {
+  background-color: lime;
+}
+
+
+/* 푸터 */
+
+.footer {
+  background-color: skyblue;
+}
